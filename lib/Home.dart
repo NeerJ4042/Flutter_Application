@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          child: Text('Hello guys chai pelo'),
+          child: Text('Test'),
         )
       ),
       drawer: Drawer(),
