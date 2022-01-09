@@ -1,6 +1,6 @@
 # flutter_app
 
-A new Flutter application.
+A new e-commerce Flutter application.
 
 ## Getting Started
 
