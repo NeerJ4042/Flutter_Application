@@ -1,11 +1,13 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+
+import 'package:flutter_app/models/catalog.dart';
 import 'package:flutter_app/models/catalog.dart';
 import 'package:flutter_app/pages/ItemDetail.dart';
+import 'package:flutter_app/utils/MyRoutes.dart';
 import 'package:flutter_app/widgets/drawer.dart';
 import 'package:flutter_app/widgets/items_widget.dart';
 import 'package:flutter_app/widgets/themes.dart';
@@ -28,6 +30,7 @@ class _HomeState extends State<Home> {
     var products = interpreted["products"];
     CatalogModel.items = List.from(products)
         .map<Item>((item) => Item.fromMap(item)).toList();
+
     setState(() {});
   }
 
@@ -35,6 +38,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyTheme.creamColor,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, MyRoutes.cartsPage);
+        },
+          backgroundColor: MyTheme.darkBluishColor,
+          child: Icon(CupertinoIcons.cart)
+      ),
       body: SafeArea(
        child: Container(
          padding: Vx.m32,
@@ -123,7 +133,7 @@ class CatalogItem extends StatelessWidget {
                               ),
                               backgroundColor: MaterialStateProperty.all(MyTheme.darkBluishColor)
                             ),
-                            child: "Buy".text.make()
+                            child: "Add to cart".text.make()
                         ),
                     ],
                   ).pOnly(right: 10)
